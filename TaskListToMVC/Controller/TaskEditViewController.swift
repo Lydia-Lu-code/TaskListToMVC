@@ -1,9 +1,3 @@
-//
-//  TaskEditViewController.swift
-//  TaskListToMVC
-//
-//  Created by Lydia Lu on 2024/11/18.
-//
 
 import UIKit
 
@@ -161,14 +155,5 @@ class TaskEditViewController: UIViewController {
                                    preferredStyle: .alert)
        alert.addAction(UIAlertAction(title: "確定", style: .default))
        present(alert, animated: true)
-    }
-}
-
-extension String {
-    func strikethrough() -> NSAttributedString {
-        let attributes: [NSAttributedString.Key: Any] = [
-            .strikethroughStyle: NSUnderlineStyle.single.rawValue
-        ]
-        return NSAttributedString(string: self, attributes: attributes)
     }
 }
