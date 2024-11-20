@@ -21,6 +21,8 @@
 		5C9E543C2CEDD85D00F745C5 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9E543B2CEDD85D00F745C5 /* DataManager.swift */; };
 		5C9E543E2CEDE1F200F745C5 /* TaskEditData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9E543D2CEDE1F200F745C5 /* TaskEditData.swift */; };
 		5C9E54402CEDE25700F745C5 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9E543F2CEDE25700F745C5 /* TaskListView.swift */; };
+		5C9E54422CEDE92100F745C5 /* TaskManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9E54412CEDE92100F745C5 /* TaskManageable.swift */; };
+		5C9E54442CEDE93700F745C5 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9E54432CEDE93700F745C5 /* NotificationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		5C9E543B2CEDD85D00F745C5 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		5C9E543D2CEDE1F200F745C5 /* TaskEditData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditData.swift; sourceTree = "<group>"; };
 		5C9E543F2CEDE25700F745C5 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
+		5C9E54412CEDE92100F745C5 /* TaskManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManageable.swift; sourceTree = "<group>"; };
+		5C9E54432CEDE93700F745C5 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				5C9E53F62CEB996600F745C5 /* TaskEditDelegate.swift */,
+				5C9E54412CEDE92100F745C5 /* TaskManageable.swift */,
+				5C9E54432CEDE93700F745C5 /* NotificationService.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -196,6 +202,7 @@
 			files = (
 				5C9E53F22CEB991300F745C5 /* Task.swift in Sources */,
 				5C9E53FA2CEB9A3A00F745C5 /* TaskCell.swift in Sources */,
+				5C9E54442CEDE93700F745C5 /* NotificationService.swift in Sources */,
 				5C9E53E12CEB458D00F745C5 /* TaskListViewController.swift in Sources */,
 				5C9E54402CEDE25700F745C5 /* TaskListView.swift in Sources */,
 				5C9E53F42CEB992D00F745C5 /* TaskManager.swift in Sources */,
@@ -205,6 +212,7 @@
 				5C9E53F72CEB996600F745C5 /* TaskEditDelegate.swift in Sources */,
 				5C9E543C2CEDD85D00F745C5 /* DataManager.swift in Sources */,
 				5C9E53FD2CEB9A7100F745C5 /* TaskEditViewController.swift in Sources */,
+				5C9E54422CEDE92100F745C5 /* TaskManageable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

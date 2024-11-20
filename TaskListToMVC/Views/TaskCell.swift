@@ -141,7 +141,8 @@ class TaskCell: UITableViewCell {
         
         // 清理所有文本和樣式
         titleLabel.text = nil
-        titleLabel.attributedText = nil
+        // 移除這行
+        // titleLabel.attributedText = nil
         titleLabel.textColor = .black  // 重置為默認顏色
         
         dateLabel.text = nil
@@ -159,22 +160,43 @@ class TaskCell: UITableViewCell {
         containerView.backgroundColor = .systemBackground
     }
     
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//        
+//        // 清理所有文本和樣式
+//        titleLabel.text = nil
+//        titleLabel.attributedText = nil
+//        titleLabel.textColor = .black  // 重置為默認顏色
+//        
+//        dateLabel.text = nil
+//        timeLabel.text = nil
+//        
+//        statusLabel.text = nil
+//        statusLabel.backgroundColor = nil
+//        statusLabel.textColor = .black
+//        
+//        priorityLabel.text = nil
+//        priorityLabel.backgroundColor = nil
+//        priorityLabel.textColor = .black
+//        
+//        notificationImageView.image = nil
+//        containerView.backgroundColor = .systemBackground
+//    }
+    
     func configure(with task: Task) {
-         
          // Configure title
+         titleLabel.text = task.title  // 直接設定文字，不使用 attributedText
+         
          switch task.status {
          case .completed:
-             titleLabel.attributedText = task.title.strikethrough()
              titleLabel.textColor = .gray
              statusLabel.backgroundColor = .systemGreen.withAlphaComponent(0.2)
              statusLabel.textColor = .systemGreen
          case .inProgress:
-             titleLabel.attributedText = NSAttributedString(string: task.title)
              titleLabel.textColor = .black
              statusLabel.backgroundColor = .systemBlue.withAlphaComponent(0.2)
              statusLabel.textColor = .systemBlue
          case .todo:
-             titleLabel.attributedText = NSAttributedString(string: task.title)
              titleLabel.textColor = .black
              statusLabel.backgroundColor = .systemGray.withAlphaComponent(0.2)
              statusLabel.textColor = .systemGray
@@ -209,7 +231,78 @@ class TaskCell: UITableViewCell {
          notificationImageView.image = task.notificationEnabled ?
              UIImage(systemName: "bell.fill") :
              UIImage(systemName: "bell.slash")
-     }
+    }
+    
+//    func configure(with task: Task) {
+//        
+//        switch task.status {
+//        case .completed:
+//            titleLabel.textColor = .gray
+//            statusLabel.backgroundColor = .systemGreen.withAlphaComponent(0.2)
+//            statusLabel.textColor = .systemGreen
+//        case .inProgress, .todo: // 合併處理進行中和待辦狀態
+//            titleLabel.text = task.title  // 直接使用 text 屬性，不使用 attributedText
+//            titleLabel.textColor = .black
+//            
+//            // 根據狀態設置不同的背景色
+//            if task.status == .inProgress {
+//                statusLabel.backgroundColor = .systemBlue.withAlphaComponent(0.2)
+//                statusLabel.textColor = .systemBlue
+//            } else {
+//                statusLabel.backgroundColor = .systemGray.withAlphaComponent(0.2)
+//                statusLabel.textColor = .systemGray
+//            }
+//        }
+//         
+////         // Configure title
+////         switch task.status {
+////         case .completed:
+////             titleLabel.attributedText = task.title.strikethrough()
+////             titleLabel.textColor = .gray
+////             statusLabel.backgroundColor = .systemGreen.withAlphaComponent(0.2)
+////             statusLabel.textColor = .systemGreen
+////         case .inProgress:
+////             titleLabel.attributedText = NSAttributedString(string: task.title)
+////             titleLabel.textColor = .black
+////             statusLabel.backgroundColor = .systemBlue.withAlphaComponent(0.2)
+////             statusLabel.textColor = .systemBlue
+////         case .todo:
+////             titleLabel.attributedText = NSAttributedString(string: task.title)
+////             titleLabel.textColor = .black
+////             statusLabel.backgroundColor = .systemGray.withAlphaComponent(0.2)
+////             statusLabel.textColor = .systemGray
+////         }
+//         
+//         // Configure status
+//         statusLabel.text = task.status.rawValue
+//         
+//         // Configure date and time
+//         let dateFormatter = DateFormatter()
+//         dateFormatter.dateFormat = "yyyy/MM/dd"
+//         dateLabel.text = dateFormatter.string(from: task.dueDate)
+//         
+//         dateFormatter.dateFormat = "HH:mm"
+//         timeLabel.text = dateFormatter.string(from: task.dueDate)
+//         
+//         // Configure priority
+//         priorityLabel.text = task.priority.rawValue
+//         switch task.priority {
+//         case .high:
+//             priorityLabel.backgroundColor = .systemRed.withAlphaComponent(0.2)
+//             priorityLabel.textColor = .systemRed
+//         case .medium:
+//             priorityLabel.backgroundColor = .systemOrange.withAlphaComponent(0.2)
+//             priorityLabel.textColor = .systemOrange
+//         case .low:
+//             priorityLabel.backgroundColor = .systemGreen.withAlphaComponent(0.2)
+//             priorityLabel.textColor = .systemGreen
+//         }
+//         
+//         // Configure notification
+//         notificationImageView.image = task.notificationEnabled ?
+//             UIImage(systemName: "bell.fill") :
+//             UIImage(systemName: "bell.slash")
+//     }
     
 }
 

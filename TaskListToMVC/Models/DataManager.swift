@@ -1,6 +1,5 @@
 // (資料持久化)
 
-
 import Foundation
 
 enum DataManagerError: Error {

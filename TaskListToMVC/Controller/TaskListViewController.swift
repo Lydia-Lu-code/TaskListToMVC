@@ -376,13 +376,13 @@ extension TaskListViewController: TaskEditDelegate {
     }
 }
 
-extension String {
-    func strikethrough() -> NSAttributedString {
-        let attributes: [NSAttributedString.Key: Any] = [
-            .strikethroughStyle: NSUnderlineStyle.single.rawValue,
-            .strikethroughColor: UIColor.gray
-        ]
-        return NSAttributedString(string: self, attributes: attributes)
-    }
-}
+//extension String {
+//    func strikethrough() -> NSAttributedString {
+//        let attributes: [NSAttributedString.Key: Any] = [
+//            .strikethroughStyle: NSUnderlineStyle.single.rawValue,
+//            .strikethroughColor: UIColor.gray
+//        ]
+//        return NSAttributedString(string: self, attributes: attributes)
+//    }
+//}
 
