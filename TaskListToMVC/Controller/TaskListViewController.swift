@@ -318,22 +318,44 @@ extension TaskListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let task = groupedTasks[indexPath.section].tasks[indexPath.row]
-            TaskManager.shared.deleteTask(task)
-            
-            // 更新本地數據結構
-            var sectionTasks = groupedTasks[indexPath.section].tasks
-            sectionTasks.remove(at: indexPath.row)
-            
-            if sectionTasks.isEmpty {
-                groupedTasks.remove(at: indexPath.section)
-            } else {
-                groupedTasks[indexPath.section].tasks = sectionTasks
+            do {
+                print("開始刪除任務: \(task.title)")
+                
+                // 1. 先從 TaskManager 刪除數據
+                try TaskManager.shared.deleteTask(task)
+                print("TaskManager 刪除成功")
+                
+                // 2. 更新本地數據結構
+                var sectionTasks = groupedTasks[indexPath.section].tasks
+                sectionTasks.remove(at: indexPath.row)
+                
+                if sectionTasks.isEmpty {
+                    groupedTasks.remove(at: indexPath.section)
+                    tableView.deleteSections(IndexSet(integer: indexPath.section), with: .automatic)
+                    print("刪除整個 section")
+                } else {
+                    groupedTasks[indexPath.section].tasks = sectionTasks
+                    tableView.deleteRows(at: [indexPath], with: .automatic)
+                    print("刪除單個任務")
+                }
+                
+                // 3. 移除通知
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [task.id.uuidString])
+                print("通知已移除")
+                
+                // 4. 檢查當前資料狀態
+                let remainingTasks = TaskManager.shared.getAllTasks()
+                print("剩餘任務數量: \(remainingTasks.count)")
+                remainingTasks.forEach { task in
+                    print("- \(task.title)")
+                }
+                
+            } catch {
+                print("刪除失敗: \(error.localizedDescription)")
             }
-            
-            // 移除通知
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [task.id.uuidString])
         }
     }
+
 }
 
 // MARK: - TaskEditDelegate
@@ -362,3 +384,4 @@ extension String {
         return NSAttributedString(string: self, attributes: attributes)
     }
 }
+

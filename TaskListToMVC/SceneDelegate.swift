@@ -1,9 +1,3 @@
-//
-//  SceneDelegate.swift
-//  TaskListToMVC
-//
-//  Created by Lydia Lu on 2024/11/18.
-//
 
 import UIKit
 

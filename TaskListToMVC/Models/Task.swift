@@ -1,5 +1,7 @@
 
 
+//(模型定義)
+
 import Foundation
 
 struct Task: Codable {
